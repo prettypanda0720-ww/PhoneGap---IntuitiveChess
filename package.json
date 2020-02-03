@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-dialogs": "^1.3.4",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-inappbrowser": "^1.7.2",
+    "cordova-plugin-whitelist": "^1.3.4"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-inappbrowser": {},
+      "cc.fovea.cordova.purchase": {
+        "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhFEkoGs6u42/QptLHLiUZzDF+N/9qlF/19yJus5To2D0nA4YbJdENn/l89uiDsrN+YCyfOB5yYJ4rlq1IbnONGZTdcNBSdsQiq/3MXhsFtekDU3BfjSdAyPPQReeeBmoGCXCzo+Ou8taxueSDn3UOvjc0rck7VBNAsWWQTZ89NCzey1qPSEt5fldKUhm1x92i2IcMFjXDcs53kPvdokFLIr4/4BW2fVu35CYdslNH8AyqRlWYoJ8L6MrZINrt+Lu6ncmIlScfWJvZSqpq4VVi3QyiFv3vXv++Pvw08aO4jtJco1vCUHLmWPimRLHJkc4pK7KxlYGvIEyuGK0WJ0HVwIDAQAB"
+      }
+    },
+    "platforms": [
+      "android",
+      "browser"
+    ]
+  },
+  "dependencies": {
+    "browse": "^0.4.0",
+    "cc.fovea.cordova.purchase": "^8.1.1",
+    "cordova-android": "^8.1.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-compat": "^1.2.0",
+    "cordova-plugin-whitelist": "^1.3.4"
+  }
+}

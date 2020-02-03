@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <title>IC - Intuitive Chess</title>
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- JQUERY -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/json3.min.js"></script>
+
+    <!-- CHESS.JS -->
+    <script src="js/chess.js"></script>
+    <script src="js/chessboard.js"></script>
+    <link   rel="stylesheet" href="css/chessboard.css">
+
+    <!-- BOOTSTRAP -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link   rel="stylesheet" href="css/bootstrap.min.css">
+  
+    <!-- TOOLTIPSTER -->
+    <script src ="js/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <link rel="stylesheet" href="js/tooltipster/css/tooltipster.bundle.min.css">
+    <link rel="stylesheet" href="js/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css">
+    <link rel="stylesheet" href="js/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css">
+    <link rel="stylesheet" href="js/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css">
+    <link rel="stylesheet" href="js/tooltipster/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="css/fontawesome-5.7.2_all.css">
+
+    <!-- IC -->
+   
+    <script src="class_account.js?v=0"></script>
+    <script src="class_ajax.js?v=0"></script>
+    <script src="class_audio.js?v=0"></script>
+    <script src="class_buttons.js?v=0"></script>
+    <script src="class_clock.js?v=0"></script>
+    <script src="class_common.js?v=0"></script>
+    <script src="class_config.js?v=0"></script>
+    <script src="class_day.js?v=0"></script>
+    <script src="class_day_aux.js?v=0"></script>
+    <script src="class_download.js?v=0"></script>
+    <script src="class_exerc.js?v=0"></script>
+    <script src="class_graph.js?v=0"></script>
+    <script src="class_help.js?v=0"></script>
+    <script src="class_lang.js?v=0"></script>    
+    <script src="class_mensagens.js?v=0"></script>
+    <script src="class_modulo.js?v=1"></script>    
+    <script src="class_my_mods.js?v=0"></script>
+    <script src="class_naveg.js?v=0"></script>
+    <script src="class_quote.js?v=0"></script>    
+    <script src="class_stats.js?v=0"></script>
+    <script src="class_store.js?v=0"></script>
+    <script src="class_suporte.js?v=0"></script>
+    <script src="class_tema.js?v=0"></script>
+    <script src="class_tips.js?v=0"></script>
+    <script src="class_tracking.js?v=0"></script>
+    <script src="class_util.js?v=0"></script>
+
+    <link rel="stylesheet" href="ic.css?v=1s40">    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <!-- SECTION: MODAL PRIMEIROS PASSOS ************************************************************************************  -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#afd1e5, #ffffff);">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal1_header" style="font-weight: bold; color: #4798f9;">
+                        Primeiros passos
+                    </h5>
+                    <button id="but_modal1_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal1_body" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="first_steps_prev" type="button" class="btn btn-warning" class="close" data-dismiss="modal" style="width: 80px;">
+                        <b>OK</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal1" type="button" style="display: none;" data-toggle="modal" data-target="#modal1">
+        Trigger Modal
+    </button>
+
+    <!-- SECTION: MODAL MENSAGENS - Redireciona para GYM ************************************************************************************  -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#afd1e5, #ffffff);">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal2_header" style="font-weight: bold; color: #4798f9;">
+                        Mensagem
+                    </h5>
+                    <button id="but_modal2_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal2_body" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close" onclick="Nav_Gym_Clicked();">
+                        <b>OK</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal2" type="button" style="display: none;" data-toggle="modal" data-target="#modal2">
+        Trigger Modal
+    </button>
+
+    <!-- SECTION: MODAL INFO ************************************************************************************  -->
+    <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#afd1e5, #ffffff);">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal3_header" style="font-weight: bold; color: #4798f9;">
+                        Info
+                    </h5>
+                    <button id="but_modal3_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal3_body" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
+                        <b>OK</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal3" type="button" style="display: none;" data-toggle="modal" data-target="#modal3">
+        Trigger Modal
+    </button>
+
+    <!-- SECTION: MODAL MENSAGENS DO DIA ************************************************************************************  -->
+    <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#afd1e5, #ffffff);">
+                <div class="modal-header">
+                
+                    <h5 class="modal-title" id="modal4_header" style="font-weight: bold; color: #4798f9; font-size: 1em;">
+                        Titulo
+                    </h5>
+                    <button id="but_modal4_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="But_OK_Msg_Day();">&times;</span>
+                    </button>
+                </div>
+                <div id="modal4_body" class="modal-body" style=" font-size: 1.2em;">Mensagem</div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close" onclick="But_OK_Msg_Day();">
+                        <b>OK</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal4" type="button" style="display: none;" data-toggle="modal" data-target="#modal4">
+        Trigger Modal
+    </button>
+
+    <!-- SECTION: MODAL MENSAGENS INTRO do MODULO ************************************************************************************  -->
+    <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#afd1e5, #ffffff);">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal5_header" style="font-weight: bold; color: #4798f9; font-size: 1em;">
+                        Titulo
+                    </h5>
+                    <button id="but_modal5_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="But_OK_Msg_Intro();">&times;</span>
+                    </button>
+                </div>
+                <div id="modal5_body" class="modal-body" style=" font-size: 1.2em;">Mensagem</div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close" onclick="But_OK_Msg_Intro();">
+                        <b>OK</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal5" type="button" style="display: none;" data-toggle="modal" data-target="#modal5">
+        Trigger Modal
+    </button>
+
+
+    <!-- SECTION: MODAL MENSAGENS - SEM HEADER - CONTINUA NA MESMA PÀG ************************************************************************************  -->
+    <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#afd1e5, #ffffff);">
+                <div id="modal6_body" class="modal-body"></div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
+                        <b>OK</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal6" type="button" style="display: none;" data-toggle="modal" data-target="#modal6">
+        Trigger Modal
+    </button>
+
+
+    <!-- SECTION: MODAL MENSAGENS DO EDITOR ************************************************************************************  -->
+    <div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background: linear-gradient(#d9ffb3, #ffffff);">
+                <div class="modal-header">
+                    <h5 id="modal7_header" class="modal-title" style="font-weight: bold; color: #658a29; font-size: 1em;">
+                        Titulo</h5>
+                    <button id="but_modal7_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="Clicked_OK_Msg_Editor();">&times;</span>
+                    </button>
+                </div>
+                <div id="modal7_body" class="modal-body" style="font-size: 1.2em; color: #777777;">
+                    Mensagem
+                </div>
+                <div class="modal-footer">
+                    <button id="" type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close" onclick="Clicked_OK_Msg_Editor();">
+                        <b>Entendi</b>
+                    </button>
+                </div>
+                <div style="text-align: left; padding: 0px 0px 10px 10px; display: none;">
+                    <input type="checkbox" value="0" name="campo-checkbox" id="modal7_checkbox">
+                    <label for="modal7_checkbox">Não mostrar novamente</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="show_modal7" type="button" style="display: none;" data-toggle="modal" data-target="#modal7">
+        Trigger Modal
+    </button>
+
+
+   <!-- SECTION: MENU ************************************************************************************  -->
+   <div class="section_naveg">
+        <div style="background: #374354; text-align: center;">
+            <table width="100%" align="center" border="0">
+                <tr>
+                    <td id="icon_back" onclick="Nav_GoBack();" class="form_box_nav" style="width: 16%;">
+                        <span id="icon_back_img"><img src="img/nav_seta_bege.png" width="32" height="32"></span>
+                    </td>
+                    <td id="icon_gym" onclick="Nav_Gym_Clicked();" class="form_box_nav" style="width: 17%;">
+                        <span id="icon_gym_img"><img src="img/nav_home_orange.png" width="32" height="32"></span>
+                    </td>
+                    <td id="icon_store" onclick="Nav_Store_Clicked();" class="form_box_nav" style="width: 17%;">
+                        <span id="icon_store_img"><img src="img/nav_store_bege.png" width="32" height="32"></span>
+                    </td>
+                    <td id="icon_help" onclick="Nav_Help_Clicked();" class="form_box_nav" style="width: 17%;">
+                        <span id="icon_help_img"><img src="img/nav_help_bege.png" width="32" height="32"></span>
+                    </td>
+                    <td id="icon_conf" onclick="Nav_Conf_Clicked();" class="form_box_nav" style="width: 17%;">
+                        <span id="icon_conf_img"><img src="img/nav_config_bege.png" width="32" height="32"></span>
+                    </td>
+                    <td id="icon_menu" onclick="Nav_Menu_Clicked();" class="form_box_nav"
+                        style="width: 16%; border-right: 0px groove #667a96;">
+                        <span id="icon_menu_img"><img src="img/nav_menu_bege.png" width="32" height="32"></span>
+                        <div class="badge" id="alert_main" data-badge="6" style="display: none;"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- SECTION: MENU VERTICAL ************************************************************************************  -->
+    <div class="section_menu">
+        <div style="min-height: 500px; text-align: left; color: #FFFFF0;">
+            <div onclick="Nav_Account_Clicked();" style="border-bottom: 1px solid #666666; padding: 20px 20px 20px 20px;">
+                <i class="fa fa-user" style="float: left; font-size: 1.5em; color: #7ddbd8; padding: 2px 12px 0px 0px; width: 40px;"></i>
+                <i class="fa fa-chevron-right" style="float: right; font-size: 1.5em; color: #FFFF00;"></i>
+                Minha conta
+            </div>
+            <div onclick="Nav_Suporte_Clicked();"
+                style="border-bottom: 1px solid #666666; padding: 20px 20px 20px 20px;">
+                <i class="fa fa-comment" style="float: left; font-size: 1.5em; color: #7ddbd8; padding: 2px 12px 0px 0px; width: 40px;"></i>
+                <i class="fa fa-chevron-right" style="float: right; font-size: 1.5em; color: #FFFF00;"></i>
+                Fale Conosco
+            </div>
+            <div onclick="Nav_About_Clicked();" style="border-bottom: 1px solid #666666; padding: 20px 20px 20px 20px;">
+                <i class="fa fa-id-card" style="float: left; font-size: 1.5em; color: #7ddbd8; padding: 2px 12px 0px 0px; width: 40px;"></i>
+                <i class="fa fa-chevron-right" style="float: right; font-size: 1.5em; color: #FFFF00;"></i>
+                Sobre o Intuitive Chess
+            </div>
+            <div onclick="Nav_Recover_Clicked();" style="border-bottom: 1px solid #666666; padding: 20px 20px 20px 20px;">
+                <i class="fas fa-cloud-download-alt" style="float: left; font-size: 1.5em; color: #7ddbd8; padding: 2px 12px 0px 0px; width: 40px;"></i>
+                <i class="fa fa-chevron-right" style="float: right; font-size: 1.5em; color: #FFFF00;"></i>
+                Recuperar conta
+            </div>
+            <div onclick="Nav_Reset_Clicked();" style="border-bottom: 1px solid #666666; padding: 20px 20px 20px 20px;">
+                <i class="fa fa-times-circle"
+                    style="float: left; font-size: 1.5em; color: #7ddbd8; padding: 2px 12px 0px 0px; width: 40px;"></i>
+                <i class="fa fa-chevron-right" style="float: right; font-size: 1.5em; color: #FFFF00;"></i>
+                Excluir conta
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SECTION: ACCOUNT ************************************************************************************  -->
+    <div class="section_account" style="display: none;">
+        <div style="text-align: left; color: #FFFFF0;">
+
+            <center>
+                <div class="box_account" style="width: 90%; text-align: center;">
+                    <div onclick="Show_Info('cadastro');" style="float: right;">
+                        <i class="fa fa-info-circle" style="font-size: 2em; color: #83b6f4; padding: 6px 6px 0px 0px;"></i>
+                    </div>
+                    <div style="padding: 10px; text-align: left; color: #cc0000; font-size: 1.5em; font-weight: bold;">
+                        Proteja sua conta!
+                        <div style="margin-top: 10px; font-size: 14px; color: #333333; font-weight: normal;">
+                            Preencha as informações abaixo para que você possa recuperar o progresso do seu treinamento em caso de mudança de aparelho.
+                         </div>
+                    </div>
+                    <div style="height: 20px;"></div>
+                </div>
+            </center>
+
+            <div id="" style="margin: 10px 0px 0px 20px; font-size: 1em; color: #ffc63c;">
+                Nome:
+            </div>
+            <div style="padding: 0px 20px 0px 20px;">
+                <input id="user_name" type="text" class="form-control" placeholder="Ex: Leonardo da Vinci" style="width: 100%; height: 40px; max-width: 400px; " onchange="My_Remove_Class(this.id)">
+            </div>
+
+            <div style="margin: 10px 0px 0px 20px; font-size: 1em; color: #ffc63c;" onchange="My_Remove_Class(this.id)">
+                E-mail
+            </div>
+            <div style="padding: 0px 20px 0px 20px;">
+                <input id="user_email" type="text" class="form-control" placeholder="Ex: leo.da.vinci@gmail.com" style="width: 100%; height: 40px; max-width: 400px;" onchange="My_Remove_Class(this.id)">
+            </div>
+
+            <div style="margin: 10px 0px 0px 20px; font-size: 1em; color: #ffc63c;" onchange="My_Remove_Class(this.id)">
+                País:
+            </div>
+            <div style="padding: 0px 20px 0px 20px;">
+                <select id="user_country" class="form-control" style="width: 240px; height: 40px; padding: 0px 10px 0px 10px;" onchange="My_Remove_Class(this.id)">
+
+                    <option value="0"  label="Select a country..." selected="selected">Selecione...</option>
+                    <option value="AX" label="Åland Islands">Åland Islands</option>
+                    <option value="AF" label="Afghanistan">Afghanistan</option>
+                    <option value="AL" label="Albania">Albania</option>
+                    <option value="DZ" label="Algeria">Algeria</option>
+                    <option value="AS" label="American Samoa">American Samoa</option>
+                    <option value="AD" label="Andorra">Andorra</option>
+                    <option value="AO" label="Angola">Angola</option>
+                    <option value="AI" label="Anguilla">Anguilla</option>
+                    <option value="AQ" label="Antarctica">Antarctica</option>
+                    <option value="AG" label="Antigua and Barbuda">Antigua and Barbuda</option>
+                    <option value="AR" label="Argentina">Argentina</option>
+                    <option value="AM" label="Armenia">Armenia</option>
+                    <option value="AW" label="Aruba">Aruba</option>
+                    <option value="AU" label="Australia">Australia</option>
+                    <option value="AT" label="Austria">Austria</option>
+                    <option value="AZ" label="Azerbaijan">Azerbaijan</option>
+                    <option value="BS" label="Bahamas">Bahamas</option>
+                    <option value="BH" label="Bahrain">Bahrain</option>
+                    <option value="BD" label="Bangladesh">Bangladesh</option>
+                    <option value="BB" label="Barbados">Barbados</option>
+                    <option value="BY" label="Belarus">Belarus</option>
+                    <option value="BE" label="Belgium">Belgium</option>
+                    <option value="BZ" label="Belize">Belize</option>
+                    <option value="BJ" label="Benin">Benin</option>
+                    <option value="BM" label="Bermuda">Bermuda</option>
+                    <option value="BT" label="Bhutan">Bhutan</option>
+                    <option value="BO" label="Bolivia">Bolivia</option>
+                    <option value="BA" label="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                    <option value="BW" label="Botswana">Botswana</option>
+                    <option value="BV" label="Bouvet Island">Bouvet Island</option>
+                    <option value="BR" label="Brazil">Brazil</option>
+                    <option value="BQ" label="British Antarctic Territory">British Antarctic Territory</option>
+                    <option value="IO" label="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                    <option value="VG" label="British Virgin Islands">British Virgin Islands</option>
+                    <option value="BN" label="Brunei">Brunei</option>
+                    <option value="BG" label="Bulgaria">Bulgaria</option>
+                    <option value="BF" label="Burkina Faso">Burkina Faso</option>
+                    <option value="BI" label="Burundi">Burundi</option>
+                    <option value="KH" label="Cambodia">Cambodia</option>
+                    <option value="CM" label="Cameroon">Cameroon</option>
+                    <option value="CA" label="Canada">Canada</option>
+                    <option value="CT" label="Canton and Enderbury Islands">Canton and Enderbury Islands</option>
+                    <option value="CV" label="Cape Verde">Cape Verde</option>
+                    <option value="KY" label="Cayman Islands">Cayman Islands</option>
+                    <option value="CF" label="Central African Republic">Central African Republic</option>
+                    <option value="TD" label="Chad">Chad</option>
+                    <option value="CL" label="Chile">Chile</option>
+                    <option value="CN" label="China">China</option>
+                    <option value="CX" label="Christmas Island">Christmas Island</option>
+                    <option value="CC" label="Cocos [Keeling] Islands">Cocos [Keeling] Islands</option>
+                    <option value="CO" label="Colombia">Colombia</option>
+                    <option value="KM" label="Comoros">Comoros</option>
+                    <option value="CG" label="Congo - Brazzaville">Congo - Brazzaville</option>
+                    <option value="CD" label="Congo - Kinshasa">Congo - Kinshasa</option>
+                    <option value="CK" label="Cook Islands">Cook Islands</option>
+                    <option value="CR" label="Costa Rica">Costa Rica</option>
+                    <option value="HR" label="Croatia">Croatia</option>
+                    <option value="CU" label="Cuba">Cuba</option>
+                    <option value="CY" label="Cyprus">Cyprus</option>
+                    <option value="CZ" label="Czech Republic">Czech Republic</option>
+                    <option value="CI" label="Côte d’Ivoire">Côte d’Ivoire</option>
+                    <option value="DK" label="Denmark">Denmark</option>
+                    <option value="DJ" label="Djibouti">Djibouti</option>
+                    <option value="DM" label="Dominica">Dominica</option>
+                    <option value="DO" label="Dominican Republic">Dominican Republic</option>
+                    <option value="NQ" label="Dronning Maud Land">Dronning Maud Land</option>
+                    <option value="DD" label="East Germany">East Germany</option>
+                    <option value="EC" label="Ecuador">Ecuador</option>
+                    <option value="EG" label="Egypt">Egypt</option>
+                    <option value="SV" label="El Salvador">El Salvador</option>
+                    <option value="GQ" label="Equatorial Guinea">Equatorial Guinea</option>
+                    <option value="ER" label="Eritrea">Eritrea</option>
+                    <option value="EE" label="Estonia">Estonia</option>
+                    <option value="ET" label="Ethiopia">Ethiopia</option>
+                    <option value="FK" label="Falkland Islands">Falkland Islands</option>
+                    <option value="FO" label="Faroe Islands">Faroe Islands</option>
+                    <option value="FJ" label="Fiji">Fiji</option>
+                    <option value="FI" label="Finland">Finland</option>
+                    <option value="FR" label="France">France</option>
+                    <option value="GF" label="French Guiana">French Guiana</option>
+                    <option value="PF" label="French Polynesia">French Polynesia</option>
+                    <option value="TF" label="French Southern Territories">French Southern Territories</option>
+                    <option value="FQ" label="French Southern and Antarctic Territories">French Southern and Antarctic Territories</option>
+                    <option value="GA" label="Gabon">Gabon</option>
+                    <option value="GM" label="Gambia">Gambia</option>
+                    <option value="GE" label="Georgia">Georgia</option>
+                    <option value="DE" label="Germany">Germany</option>
+                    <option value="GH" label="Ghana">Ghana</option>
+                    <option value="GI" label="Gibraltar">Gibraltar</option>
+                    <option value="GR" label="Greece">Greece</option>
+                    <option value="GL" label="Greenland">Greenland</option>
+                    <option value="GD" label="Grenada">Grenada</option>
+                    <option value="GP" label="Guadeloupe">Guadeloupe</option>
+                    <option value="GU" label="Guam">Guam</option>
+                    <option value="GT" label="Guatemala">Guatemala</option>
+                    <option value="GG" label="Guernsey">Guernsey</option>
+                    <option value="GN" label="Guinea">Guinea</option>
+                    <option value="GW" label="Guinea-Bissau">Guinea-Bissau</option>
+                    <option value="GY" label="Guyana">Guyana</option>
+                    <option value="HT" label="Haiti">Haiti</option>
+                    <option value="HM" label="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+                    <option value="HN" label="Honduras">Honduras</option>
+                    <option value="HK" label="Hong Kong SAR China">Hong Kong SAR China</option>
+                    <option value="HU" label="Hungary">Hungary</option>
+                    <option value="IS" label="Iceland">Iceland</option>
+                    <option value="IN" label="India">India</option>
+                    <option value="ID" label="Indonesia">Indonesia</option>
+                    <option value="IR" label="Iran">Iran</option>
+                    <option value="IQ" label="Iraq">Iraq</option>
+                    <option value="IE" label="Ireland">Ireland</option>
+                    <option value="IM" label="Isle of Man">Isle of Man</option>
+                    <option value="IL" label="Israel">Israel</option>
+                    <option value="IT" label="Italy">Italy</option>
+                    <option value="JM" label="Jamaica">Jamaica</option>
+                    <option value="JP" label="Japan">Japan</option>
+                    <option value="JE" label="Jersey">Jersey</option>
+                    <option value="JT" label="Johnston Island">Johnston Island</option>
+                    <option value="JO" label="Jordan">Jordan</option>
+                    <option value="KZ" label="Kazakhstan">Kazakhstan</option>
+                    <option value="KE" label="Kenya">Kenya</option>
+                    <option value="KI" label="Kiribati">Kiribati</option>
+                    <option value="KW" label="Kuwait">Kuwait</option>
+                    <option value="KG" label="Kyrgyzstan">Kyrgyzstan</option>
+                    <option value="LA" label="Laos">Laos</option>
+                    <option value="LV" label="Latvia">Latvia</option>
+                    <option value="LB" label="Lebanon">Lebanon</option>
+                    <option value="LS" label="Lesotho">Lesotho</option>
+                    <option value="LR" label="Liberia">Liberia</option>
+                    <option value="LY" label="Libya">Libya</option>
+                    <option value="LI" label="Liechtenstein">Liechtenstein</option>
+                    <option value="LT" label="Lithuania">Lithuania</option>
+                    <option value="LU" label="Luxembourg">Luxembourg</option>
+                    <option value="MO" label="Macau SAR China">Macau SAR China</option>
+                    <option value="MK" label="Macedonia">Macedonia</option>
+                    <option value="MG" label="Madagascar">Madagascar</option>
+                    <option value="MW" label="Malawi">Malawi</option>
+                    <option value="MY" label="Malaysia">Malaysia</option>
+                    <option value="MV" label="Maldives">Maldives</option>
+                    <option value="ML" label="Mali">Mali</option>
+                    <option value="MT" label="Malta">Malta</option>
+                    <option value="MH" label="Marshall Islands">Marshall Islands</option>
+                    <option value="MQ" label="Martinique">Martinique</option>
+                    <option value="MR" label="Mauritania">Mauritania</option>
+                    <option value="MU" label="Mauritius">Mauritius</option>
+                    <option value="YT" label="Mayotte">Mayotte</option>
+                    <option value="FX" label="Metropolitan France">Metropolitan France</option>
+                    <option value="MX" label="Mexico">Mexico</option>
+                    <option value="FM" label="Micronesia">Micronesia</option>
+                    <option value="MI" label="Midway Islands">Midway Islands</option>
+                    <option value="MD" label="Moldova">Moldova</option>
+                    <option value="MC" label="Monaco">Monaco</option>
+                    <option value="MN" label="Mongolia">Mongolia</option>
+                    <option value="ME" label="Montenegro">Montenegro</option>
+                    <option value="MS" label="Montserrat">Montserrat</option>
+                    <option value="MA" label="Morocco">Morocco</option>
+                    <option value="MZ" label="Mozambique">Mozambique</option>
+                    <option value="MM" label="Myanmar [Burma]">Myanmar [Burma]</option>
+                    <option value="NA" label="Namibia">Namibia</option>
+                    <option value="NR" label="Nauru">Nauru</option>
+                    <option value="NP" label="Nepal">Nepal</option>
+                    <option value="NL" label="Netherlands">Netherlands</option>
+                    <option value="AN" label="Netherlands Antilles">Netherlands Antilles</option>
+                    <option value="NT" label="Neutral Zone">Neutral Zone</option>
+                    <option value="NC" label="New Caledonia">New Caledonia</option>
+                    <option value="NZ" label="New Zealand">New Zealand</option>
+                    <option value="NI" label="Nicaragua">Nicaragua</option>
+                    <option value="NE" label="Niger">Niger</option>
+                    <option value="NG" label="Nigeria">Nigeria</option>
+                    <option value="NU" label="Niue">Niue</option>
+                    <option value="NF" label="Norfolk Island">Norfolk Island</option>
+                    <option value="KP" label="North Korea">North Korea</option>
+                    <option value="VD" label="North Vietnam">North Vietnam</option>
+                    <option value="MP" label="Northern Mariana Islands">Northern Mariana Islands</option>
+                    <option value="NO" label="Norway">Norway</option>
+                    <option value="OM" label="Oman">Oman</option>
+                    <option value="PC" label="Pacific Islands Trust Territory">Pacific Islands Trust Territory</option>
+                    <option value="PK" label="Pakistan">Pakistan</option>
+                    <option value="PW" label="Palau">Palau</option>
+                    <option value="PS" label="Palestinian Territories">Palestinian Territories</option>
+                    <option value="PA" label="Panama">Panama</option>
+                    <option value="PZ" label="Panama Canal Zone">Panama Canal Zone</option>
+                    <option value="PG" label="Papua New Guinea">Papua New Guinea</option>
+                    <option value="PY" label="Paraguay">Paraguay</option>
+                    <option value="YD" label="People's Democratic Republic of Yemen">People's Democratic Republic of Yemen</option>
+                    <option value="PE" label="Peru">Peru</option>
+                    <option value="PH" label="Philippines">Philippines</option>
+                    <option value="PN" label="Pitcairn Islands">Pitcairn Islands</option>
+                    <option value="PL" label="Poland">Poland</option>
+                    <option value="PT" label="Portugal">Portugal</option>
+                    <option value="PR" label="Puerto Rico">Puerto Rico</option>
+                    <option value="QA" label="Qatar">Qatar</option>
+                    <option value="RO" label="Romania">Romania</option>
+                    <option value="RU" label="Russia">Russia</option>
+                    <option value="RW" label="Rwanda">Rwanda</option>
+                    <option value="RE" label="Réunion">Réunion</option>
+                    <option value="BL" label="Saint Barthélemy">Saint Barthélemy</option>
+                    <option value="SH" label="Saint Helena">Saint Helena</option>
+                    <option value="KN" label="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                    <option value="LC" label="Saint Lucia">Saint Lucia</option>
+                    <option value="MF" label="Saint Martin">Saint Martin</option>
+                    <option value="PM" label="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+                    <option value="VC" label="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                    <option value="WS" label="Samoa">Samoa</option>
+                    <option value="SM" label="San Marino">San Marino</option>
+                    <option value="SA" label="Saudi Arabia">Saudi Arabia</option>
+                    <option value="SN" label="Senegal">Senegal</option>
+                    <option value="RS" label="Serbia">Serbia</option>
+                    <option value="CS" label="Serbia and Montenegro">Serbia and Montenegro</option>
+                    <option value="SC" label="Seychelles">Seychelles</option>
+                    <option value="SL" label="Sierra Leone">Sierra Leone</option>
+                    <option value="SG" label="Singapore">Singapore</option>
+                    <option value="SK" label="Slovakia">Slovakia</option>
+                    <option value="SI" label="Slovenia">Slovenia</option>
+                    <option value="SB" label="Solomon Islands">Solomon Islands</option>
+                    <option value="SO" label="Somalia">Somalia</option>
+                    <option value="ZA" label="South Africa">South Africa</option>
+                    <option value="GS" label="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+                    <option value="KR" label="South Korea">South Korea</option>
+                    <option value="ES" label="Spain">Spain</option>
+                    <option value="LK" label="Sri Lanka">Sri Lanka</option>
+                    <option value="SD" label="Sudan">Sudan</option>
+                    <option value="SR" label="Suriname">Suriname</option>
+                    <option value="SJ" label="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+                    <option value="SZ" label="Swaziland">Swaziland</option>
+                    <option value="SE" label="Sweden">Sweden</option>
+                    <option value="CH" label="Switzerland">Switzerland</option>
+                    <option value="SY" label="Syria">Syria</option>
+                    <option value="ST" label="São Tomé and Príncipe">São Tomé and Príncipe</option>
+                    <option value="TW" label="Taiwan">Taiwan</option>
+                    <option value="TJ" label="Tajikistan">Tajikistan</option>
+                    <option value="TZ" label="Tanzania">Tanzania</option>
+                    <option value="TH" label="Thailand">Thailand</option>
+                    <option value="TL" label="Timor-Leste">Timor-Leste</option>
+                    <option value="TG" label="Togo">Togo</option>
+                    <option value="TK" label="Tokelau">Tokelau</option>
+                    <option value="TO" label="Tonga">Tonga</option>
+                    <option value="TT" label="Trinidad and Tobago">Trinidad and Tobago</option>
+                    <option value="TN" label="Tunisia">Tunisia</option>
+                    <option value="TR" label="Turkey">Turkey</option>
+                    <option value="TM" label="Turkmenistan">Turkmenistan</option>
+                    <option value="TC" label="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                    <option value="TV" label="Tuvalu">Tuvalu</option>
+                    <option value="UM" label="U.S. Minor Outlying Islands">U.S. Minor Outlying Islands</option>
+                    <option value="PU" label="U.S. Miscellaneous Pacific Islands">U.S. Miscellaneous Pacific Islands</option>
+                    <option value="VI" label="U.S. Virgin Islands">U.S. Virgin Islands</option>
+                    <option value="UG" label="Uganda">Uganda</option>
+                    <option value="UA" label="Ukraine">Ukraine</option>
+                    <option value="SU" label="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
+                    <option value="AE" label="United Arab Emirates">United Arab Emirates</option>
+                    <option value="GB" label="United Kingdom">United Kingdom</option>
+                    <option value="US" label="United States">United States</option>
+                    <option value="ZZ" label="Unknown or Invalid Region">Unknown or Invalid Region</option>
+                    <option value="UY" label="Uruguay">Uruguay</option>
+                    <option value="UZ" label="Uzbekistan">Uzbekistan</option>
+                    <option value="VU" label="Vanuatu">Vanuatu</option>
+                    <option value="VA" label="Vatican City">Vatican City</option>
+                    <option value="VE" label="Venezuela">Venezuela</option>
+                    <option value="VN" label="Vietnam">Vietnam</option>
+                    <option value="WK" label="Wake Island">Wake Island</option>
+                    <option value="WF" label="Wallis and Futuna">Wallis and Futuna</option>
+                    <option value="EH" label="Western Sahara">Western Sahara</option>
+                    <option value="YE" label="Yemen">Yemen</option>
+                    <option value="ZM" label="Zambia">Zambia</option>
+                    <option value="ZW" label="Zimbabwe">Zimbabwe</option>
+                </select>
+            </div>
+
+            <div style="margin: 10px 0px 0px 20px; font-size: 1em; color: #ffc63c;">
+                Sexo:
+            </div>
+            <div style="padding: 0px 20px 0px 20px;">
+                <select id="user_sexo" class="form-control" style="width: 240px; height: 40px; padding: 0px 10px 0px 10px;" onchange="My_Remove_Class(this.id)">
+                    <option value="0">Selecione...</option>
+                    <option value="M">Sexo Masculino</option>
+                    <option value="F">Sexo Feminino</option>
+                </select>
+            </div>
+
+            <div style="margin: 10px 0px 0px 20px; font-size: 1em; color: #ffc63c;">
+                Data de nascimento:
+            </div>
+            <div style="padding: 0px 20px 0px 20px;">
+                <select id="user_nasc_dd" class="form-control" style="width: 60px; height: 40px; padding: 0px 10px 0px 10px; float: left; margin-right: 10px;" onchange="My_Remove_Class(this.id)">
+                    <option value="0">-</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
+                    <option value="06">6</option>
+                    <option value="07">7</option>
+                    <option value="08">8</option>
+                    <option value="09">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <select id="user_nasc_mm" class="form-control" style="width: 80px; height: 40px; padding: 0px 10px 0px 10px; float: left; margin-right: 10px;" onchange="My_Remove_Class(this.id)">
+                    <option value="0">-</option>
+                    <option value="01">Jan</option>
+                    <option value="02">Fev</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Abr</option>
+                    <option value="05">Mai</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Ago</option>
+                    <option value="09">Set</option>
+                    <option value="10">Out</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dez</option>
+                </select>
+                <select id="user_nasc_aa" class="form-control" style="width: 80px; height: 40px; padding: 0px 10px 0px 10px; float: left;" onchange="My_Remove_Class(this.id)">
+                    <option value="0">-</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                    <option value="2000">2000</option>
+                    <option value="1999">1999</option>
+                    <option value="1998">1998</option>
+                    <option value="1997">1997</option>
+                    <option value="1996">1996</option>
+                    <option value="1995">1995</option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                    <option value="1992">1992</option>
+                    <option value="1991">1991</option>
+                    <option value="1990">1990</option>
+                    <option value="1989">1989</option>
+                    <option value="1988">1988</option>
+                    <option value="1987">1987</option>
+                    <option value="1986">1986</option>
+                    <option value="1985">1985</option>
+                    <option value="1984">1984</option>
+                    <option value="1983">1983</option>
+                    <option value="1982">1982</option>
+                    <option value="1981">1981</option>
+                    <option value="1980">1980</option>
+                    <option value="1979">1979</option>
+                    <option value="1978">1978</option>
+                    <option value="1977">1977</option>
+                    <option value="1976">1976</option>
+                    <option value="1975">1975</option>
+                    <option value="1974">1974</option>
+                    <option value="1973">1973</option>
+                    <option value="1972">1972</option>
+                    <option value="1971">1971</option>
+                    <option value="1970">1970</option>
+                    <option value="1969">1969</option>
+                    <option value="1968">1968</option>
+                    <option value="1967">1967</option>
+                    <option value="1966">1966</option>
+                    <option value="1965">1965</option>
+                    <option value="1964">1964</option>
+                    <option value="1963">1963</option>
+                    <option value="1962">1962</option>
+                    <option value="1961">1961</option>
+                    <option value="1960">1960</option>
+                    <option value="1959">1959</option>
+                    <option value="1958">1958</option>
+                    <option value="1957">1957</option>
+                    <option value="1956">1956</option>
+                    <option value="1955">1955</option>
+                    <option value="1954">1954</option>
+                    <option value="1953">1953</option>
+                    <option value="1952">1952</option>
+                    <option value="1950">1950</option>
+                    <option value="1949">1949</option>
+                    <option value="1948">1948</option>
+                    <option value="1947">1947</option>
+                    <option value="1946">1946</option>
+                    <option value="1945">1945</option>
+                    <option value="1944">1944</option>
+                    <option value="1943">1943</option>
+                    <option value="1942">1942</option>
+                    <option value="1941">1941</option>
+                    <option value="1940">1940</option>
+                </select>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div style="margin: 10px 0px 0px 20px; font-size: 1em; color: #ffc63c;">
+                Idioma para suporte:
+            </div>
+            <div style="padding: 0px 20px 0px 20px;">
+                <select id="user_idioma" class="form-control" style="width: 240px; height: 40px; padding: 0px 10px 0px 10px;" onchange="My_Remove_Class(this.id)">
+                    <option value="0">Selecione...</option>
+                    <option value="POR">Português</option>
+                    <option value="ENG">Inglês</option>
+                    <option value="SPN">Espanhol</option>
+                    <option value="GER">Alemão</option>
+                </select>
+            </div>
+
+            <div style="margin: 20px 0px 0px 20px; font-size: 1.25em; color: #CCCCCC;">
+                <button class="btn btn-warning" type="button" onclick="But_Cancel_Cad();" style="margin: 10px 20px 0px 0px; font-weight: bold; float: left;">
+                    Cancelar
+                </button>
+                <button class="btn btn-warning" type="button" onclick="But_Save_Cad();" style="margin: 10px 20px 0px 0px; font-weight: bold; float: left;">
+                    Salvar
+                </button>
+            </div>
+            <div style="clear: both;"></div>
+
+        </div>
+    </div>
+
+
+    <!-- SECTION: STORE ************************************************************************************  -->
+    <div class="section_mods_store">
+        <center>
+            <div id="box_promo_1" class="box_store_promo" style="display: none;">
+                <div id="box_promo_header_1" class="box_store_promo_header">
+                    Aqui vai o conteúdo
+                </div>
+                <div class="box_store_promo_body">
+                    <img id="box_promo_img_1" src="img/covers/min_01.jpg" width="90" height="116" style="margin: 10px;" align="left">
+                    <div style="padding: 10px;">
+                        <span id="box_promo_body_1">Texto do box promo</span>
+                        <div id="box_promo_footer_1" class="box_promo_footer">
+                            Lançamento: 13/out
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="box_promo_2" class="box_store_promo" style="display: none;">
+                <div id="box_promo_header_2" class="box_store_promo_header">
+                    Aqui vai o conteúdo
+                </div>
+                <div class="box_store_promo_body">
+                    <img id="box_promo_img_2" src="img/covers/min_02.jpg" width="90" height="116" style="margin: 10px;" align="left">
+                    <div style="padding: 10px;">
+                        <span id="box_promo_body_2">Texto do box promo</span>
+                        <div id="box_promo_footer_2" class="box_promo_footer">
+                            Lançamento: 13/out
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="box_promo_3" class="box_store_promo" style="display: none;">
+                <div id="box_promo_header_3" class="box_store_promo_header">
+                    Aqui vai o conteúdo
+                </div>
+                <div class="box_store_promo_body">
+                    <img id="box_promo_img_3" src="img/covers/min_03.jpg" width="90" height="116" style="margin: 10px;" align="left">
+                    <div style="padding: 10px;">
+                        <span id="box_promo_body_3">Texto do box promo</span>
+                        <div id="box_promo_footer_3" class="box_promo_footer">
+                            Lançamento: 13/out
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </center>
+        <div id="store_lines"></div>
+    </div>
+
+
+    <!-- SECTION: HOME ************************************************************************************  -->
+    <div class="section_home">
+        <div style="padding: 20px 0px 10px 0px;">
+            <img src="img/logotipo.png" style="border-radius: 10%; padding: 20px 0px 0px 20px; background: radial-gradient(#FFFFFF, #b8c7db);" width="278" height="186">
+        </div>
+        <div id="quote_text" class="quote_text"></div>
+        <div id="quote_sign" class="quote_sign"></div>
+        <div class="tit_biblioteca">
+            MEUS MÓDULOS
+        </div>
+        <center>
+            <div id="area_mods"></div>
+        </center>
+    </div>
+
+
+
+    <!-- SECTION: DAYS ************************************************************************************  -->
+    <div class="section_days">
+        <center>
+            <div class="tit_stats" style="padding: 10px 0px 10px 20px; ">
+                <div style="float: left; height: 40px; font-size: 18px;">
+                    <span id="mod_titulo">Nome do módulo</span>
+                    <span id="mod_id" style="display: none;"></span>
+                </div>
+                <div onclick="Show_Info('days');" style="float: right;">
+                    <i class="fa fa-info-circle" style="font-size: 1.5em; color: #83b6f4; padding: 5px 20px 0px 0px;"></i>
+                </div>
+            </div>
+            <div style="clear: both; padding: 2px;"></div>
+            <table width="90%" align="center" border="0">
+                <tr>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(1);">
+                            <time class="icon">
+                                <strong id="bg_day_1" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_1" style="color: #999999;">1</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(2);">
+                            <time class="icon">
+                                <strong id="bg_day_2" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_2" style="color: #999999;">2</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(3);">
+                            <time class="icon">
+                                <strong id="bg_day_3" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_3" style="color: #999999;">3</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(4);">
+                            <time class="icon">
+                                <strong id="bg_day_4" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_4" style="color: #999999;">4</span>
+                            </time>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="height: 10px;"></div>
+            <table width="90%" align="center" border="0">
+                <tr>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(5);">
+                            <time class="icon">
+                                <strong id="bg_day_5" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_5" style="color: #999999;">5</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(6);">
+                            <time class="icon">
+                                <strong id="bg_day_6" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_6" style="color: #999999;">6</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(7);">
+                            <time class="icon">
+                                <strong id="bg_day_7" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_7" style="color: #999999;">7</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(8);">
+                            <time class="icon">
+                                <strong id="bg_day_8" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_8" style="color: #999999;">8</span>
+                            </time>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="height: 10px;"></div>
+            <table width="90%" align="center" border="0">
+                <tr>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(9);">
+                            <time class="icon">
+                                <strong id="bg_day_9" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_9" style="color: #999999;">9</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(10);">
+                            <time class="icon">
+                                <strong id="bg_day_10" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_10" style="color: #999999;">10</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(11);">
+                            <time class="icon">
+                                <strong id="bg_day_11" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_11" style="color: #999999;">11</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(12);">
+                            <time class="icon">
+                                <strong id="bg_day_12" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_12" style="color: #999999;">12</span>
+                            </time>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="height: 10px;"></div>
+            <table width="90%" align="center" border="0">
+                <tr>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(13);">
+                            <time class="icon">
+                                <strong id="bg_day_13" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_13" style="color: #999999;">13</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(14);">
+                            <time class="icon">
+                                <strong id="bg_day_14" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_14" style="color: #999999;">14</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(15);">
+                            <time class="icon">
+                                <strong id="bg_day_15" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_15" style="color: #999999;">15</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(16);">
+                            <time class="icon">
+                                <strong id="bg_day_16" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_16" style="color: #999999;">16</span>
+                            </time>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="height: 10px;"></div>
+            <table width="90%" align="center" border="0">
+                <tr>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(17);">
+                            <time class="icon">
+                                <strong id="bg_day_17" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_17" style="color: #999999;">17</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(18);">
+                            <time class="icon">
+                                <strong id="bg_day_18" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_18" style="color: #999999;">18</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(19);">
+                            <time class="icon">
+                                <strong id="bg_day_19" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_19" style="color: #999999;">19</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td align="center">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(20);">
+                            <time class="icon">
+                                <strong id="bg_day_20" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_20" style="color: #999999;">20</span>
+                            </time>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div style="height: 10px;"></div>
+            <table width="90%" align="center" border="0">
+                <tr>
+                    <td align="center" style="width: 25%;">
+                        <div style="padding: 5px 0px 0px 0px;" onclick="Nav_Day_Clicked(21);">
+                            <time class="icon">
+                                <strong id="bg_day_21" style="background-color: #999999;">DIA</strong>
+                                <span id="txt_day_21" style="color: #999999;">21</span>
+                            </time>
+                        </div>
+                    </td>
+                    <td colspan="3" align="center" style="width: 75%;">
+                        <div style="width: 48%; padding: 5px 0px 0px 0px; float: left;"
+                            onclick="Nav_Start_Reforco();">
+                            <span class="days_box_gg">
+                                <div class="fa fa-reply" style="font-size: 18px;"></div><br>
+                                REFORÇO
+                            </span>
+                        </div>
+                        <div style="width: 4%; float: left;">&nbsp</div>
+                        <div style="width: 48%; padding: 5px 0px 0px 0px; float: left;"
+                            onclick="Nav_Restart_Clicked();">
+                            <span class="days_box_gg">
+                                <div class="fa fa-redo" style="font-size: 18px;"></div><br>
+                                REFAZER
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </center>
+    </div>
+
+
+   <!-- SECTION: BOARD ************************************************************************************  -->
+   <div class="section_board">
+        <div style="padding: 5px 0px 0px 0px; height: 60px;">
+            <table style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <th style="padding: 5px 8px 0px 8px; font-size: 12px; " colspan="3">
+                            <table style="width: 100%">
+                                <tr style="line-height: 100%; color:#aaaaaa;">
+                                    <td align="left">
+                                        <span id="white">White</span> x <span id="black">Black</span>
+                                    </td>
+                                    <td align="center">
+                                    	<span id="gym_id_exerc" style="display: none;">1</span>
+                                    </td>
+                                    <td align="right">
+                                        <span id="place" style="font-size: 11px;">Place</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 50px; font-size: 1.25em; color: #DDDDDD; padding: 0px 0px 0px 10px;">
+                            <span id="gym_exerc">1</span>/<span id="gym_tot">65</span>
+                        </th>
+                        <th style="font-size: 1.5em; color: #009900;">
+                            <span id="clock">23:59</span>
+                        </th>
+                        <th style="width: 50px;">
+                            <i id="turn" class="fa fa-square" style="font-size: 1.25em; color: #FFFFFF;"></i>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <center>
+            <div style="width: 100%; padding: 10px 2px 0px 2px;">
+                <div style="position: relative;">
+                    <div    id="board" style="width: 100%; text-align: center;"></div>
+                    <canvas id="graph" style="z-index: 100; opacity: 1; text-align: center;" onclick="Canvas_Clicked(event);"></canvas>
+
+                    <div id="layer_tips" class="layer_tip" style="opacity: 0.98; z-index: 200;">
+                            <span id="tip_a8"  class="tooltip" style=""></span>
+                            <span id="tip_b8"  class="tooltip" style=""></span>
+                            <span id="tip_c8"  class="tooltip" style=""></span>
+                            <span id="tip_d8"  class="tooltip" style=""></span>
+                            <span id="tip_e8"  class="tooltip" style=""></span>
+                            <span id="tip_f8"  class="tooltip" style=""></span>
+                            <span id="tip_g8"  class="tooltip" style=""></span>
+                            <span id="tip_h8"  class="tooltip" style=""></span>
+
+                            <span id="tip_a7"  class="tooltip" style=""></span>
+                            <span id="tip_b7"  class="tooltip" style=""></span>
+                            <span id="tip_c7"  class="tooltip" style=""></span>
+                            <span id="tip_d7"  class="tooltip" style=""></span>
+                            <span id="tip_e7"  class="tooltip" style=""></span>
+                            <span id="tip_f7"  class="tooltip" style=""></span>
+                            <span id="tip_g7"  class="tooltip" style=""></span>
+                            <span id="tip_h7"  class="tooltip" style=""></span>
+
+                            <span id="tip_a6"  class="tooltip" style=""></span>
+                            <span id="tip_b6"  class="tooltip" style=""></span>
+                            <span id="tip_c6"  class="tooltip" style=""></span>
+                            <span id="tip_d6"  class="tooltip" style=""></span>
+                            <span id="tip_e6"  class="tooltip" style=""></span>
+                            <span id="tip_f6"  class="tooltip" style=""></span>
+                            <span id="tip_g6"  class="tooltip" style=""></span>
+                            <span id="tip_h6"  class="tooltip" style=""></span>
+
+                            <span id="tip_a5"  class="tooltip" style=""></span>
+                            <span id="tip_b5"  class="tooltip" style=""></span>
+                            <span id="tip_c5"  class="tooltip" style=""></span>
+                            <span id="tip_d5"  class="tooltip" style=""></span>
+                            <span id="tip_e5"  class="tooltip" style=""></span>
+                            <span id="tip_f5"  class="tooltip" style=""></span>
+                            <span id="tip_g5"  class="tooltip" style=""></span>
+                            <span id="tip_h5"  class="tooltip" style=""></span>
+
+                            <span id="tip_a4"  class="tooltip" style=""></span>
+                            <span id="tip_b4"  class="tooltip" style=""></span>
+                            <span id="tip_c4"  class="tooltip" style=""></span>
+                            <span id="tip_d4"  class="tooltip" style=""></span>
+                            <span id="tip_e4"  class="tooltip" style=""></span>
+                            <span id="tip_f4"  class="tooltip" style=""></span>
+                            <span id="tip_g4"  class="tooltip" style=""></span>
+                            <span id="tip_h4"  class="tooltip" style=""></span>
+
+                            <span id="tip_a3"  class="tooltip" style=""></span>
+                            <span id="tip_b3"  class="tooltip" style=""></span>
+                            <span id="tip_c3"  class="tooltip" style=""></span>
+                            <span id="tip_d3"  class="tooltip" style=""></span>
+                            <span id="tip_e3"  class="tooltip" style=""></span>
+                            <span id="tip_f3"  class="tooltip" style=""></span>
+                            <span id="tip_g3"  class="tooltip" style=""></span>
+                            <span id="tip_h3"  class="tooltip" style=""></span>
+
+                            <span id="tip_a2"  class="tooltip" style=""></span>
+                            <span id="tip_b2"  class="tooltip" style=""></span>
+                            <span id="tip_c2"  class="tooltip" style=""></span>
+                            <span id="tip_d2"  class="tooltip" style=""></span>
+                            <span id="tip_e2"  class="tooltip" style=""></span>
+                            <span id="tip_f2"  class="tooltip" style=""></span>
+                            <span id="tip_g2"  class="tooltip" style=""></span>
+                            <span id="tip_h2"  class="tooltip" style=""></span>
+
+                            <span id="tip_a1"  class="tooltip" style=""></span>
+                            <span id="tip_b1"  class="tooltip" style=""></span>
+                            <span id="tip_c1"  class="tooltip" style=""></span>
+                            <span id="tip_d1"  class="tooltip" style=""></span>
+                            <span id="tip_e1"  class="tooltip" style=""></span>
+                            <span id="tip_f1"  class="tooltip" style=""></span>
+                            <span id="tip_g1"  class="tooltip" style=""></span>
+                            <span id="tip_h1"  class="tooltip" style=""></span>
+                        </div>
+
+                    <div id="control_area" style="position: relative; text-align: center; ">
+                        <div id="sec_control" style="margin: 10px 0px 0px 0px;">                        
+                            <button id="but_board_1" class="btn btn-warning but_nav_board" type="button" onclick="But_Board_Clicked(1);">
+                                <i class="fa fa-angle-double-left"></i>
+                            </button>
+                            <button id="but_board_2" class="btn btn-warning but_nav_board" type="button" onclick="But_Board_Clicked(2);">
+                                <i class="fa fa-angle-left"></i>
+                            </button>
+                            <button id="but_board_3" class="btn btn-warning but_nav_board_redo" type="button" onclick="But_Board_Clicked(3);">
+                                <i class="fa fa-redo"></i>
+                            </button>
+                            <button id="but_board_4" class="btn btn-warning but_nav_board" type="button" onclick="But_Board_Clicked(4);">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                            <button id="but_board_5" class="btn btn-warning but_nav_board" type="button" onclick="But_Board_Clicked(5);">
+                                <i class="fa fa-angle-double-right"></i>
+                            </button>
+                        </div>               
+                    </div>
+
+                </div>
+            </div>
+        </center>
+
+
+
+           		<div id="area_but_go" style="display: none; text-align: center;">
+        			<button onclick="Click_Fim_Alternativa();"  type="button" class="btn btn-warning" style="margin-top: 10px; width: 100px; height: 42px;">
+            			<i class="fas fa-reply"></i>
+        			</button>
+    			</div>
+
+                <div id="area_alt_3but" style="display: none;">
+                    <table width="100%" border="0" align="center">
+                        <tr>
+                            <td width="33%" align="center">
+                                <div id="but1_3alts">x</div>
+                            </td>
+                            <td width="33%" align="center">
+                                <div id="but2_3alts">y</div>
+                            </td>
+                            <td width="33%" align="center">
+                                <div id="but3_3alts">z</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="area_alt_2but" style="display: none;">
+                    <table width="100%" border="0" align="center">
+                        <tr>
+                            <td width="50%" align="center">
+                                <div id="but1_2alts">x</div>
+                            </td>
+                            <td width="50%" align="center">
+                                <div id="but2_2alts">x</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+        <!--
+        <table width="100%" align="left">
+            <tr>
+                <td align="center">
+                    <div id="area_alt_2but" style="margin-top: 10px; display: none;"></div>
+                    <div id="area_alt_3but" style="margin-top: 10px; display: none;"></div>
+                </td>
+            </tr>
+        </table>
+        -->
+
+     </div>
+
+
+    <!-- SECTION: BOARD - CHECK ************************************************************************************  -->
+    <img id="hide_img" src="img/check_mark.png" style="border-radius: 5%; display: none;">
+
+
+    <!-- SECTION: STATS  ************************************************************************************  -->
+    <div class="section_stats">
+        <div style="min-height: 500px; text-align: left; padding: 0px 0px 0px 0px; color: #FFFFF0;">
+            <center>
+                <div style="padding: 10px 0px 0px 0px;">
+                    <div class="tit_stats" style="padding: 10px 10px 10px 10px;">
+                        <div onclick="Show_Info('stats');" style="float: right;">
+                            <i class="fa fa-info-circle" style="font-size: 2.5em; color: #83b6f4; padding: 0px 4px 0px 0px;"></i>
+                        </div>
+                        <span id="titulo_mod_stats" style="font-size: 1.5em;">Nome do módulo</span>
+                    </div>
+                    <div id="stats_dados" class="form_box" style="background: #e2ecf2;"></div>
+                </div>
+            </center>
+        </div>
+    </div>
+
+    <!-- SECTION: ABOUT  ************************************************************************************  -->
+    <div class="section_about">
+        <div style="text-align: center; padding: 0px 0px 0px 0px; color: #FFFFF0;">
+            <div style="padding: 20px 0px 10px 0px;">
+                <img src="img/logotipo.png" style="border-radius: 10%; padding: 20px 0px 0px 20px; background: radial-gradient(#FFFFFF, #b8c7db);" width="222" height="149">
+            </div>
+            <div style="padding: 20px 0px 0px 0px; font-size: 16px; color: #FFFF00; font-weight: bold;">
+                Versão:
+            </div>
+            <div id="about_version" style="padding: 0px 0px 0px 0px; font-size: 2.5em; font-weight: bold; color: #fc0ad3; line-height: 100%;">
+                1.1.0
+            </div>
+            <div id="about_released" style="padding: 0px 0px 0px 0px; font-size: 11px;">
+                20/06/2019
+            </div>
+            <div style="padding: 20px 0px 5px 0px;font-size: 16px; color: #FFFF00; font-weight: bold;">
+                Criado por:
+            </div>
+            <div style="padding: 0px 0px 0px 0px;font-size: 1.25em; line-height: 130%;">
+                Sérgio Batista
+            </div>
+            <div style="padding: 0px 0px 0px 0px;font-size: 11px; color: #AAAAAA;">
+                sergio.tadela@gmail.com
+            </div>
+            <div style="padding: 20px 0px 0px 0px; font-size: 16px; color: #FFFF00; font-weight: bold;">
+                Licenças de terceiros:
+            </div>
+            <div style="padding: 10px 0px 0px 0px; font-size: 1.25em;">
+                <b>Bootstrap</b>
+            </div>
+            <div style="color: #AAAAAA; font-size: 1em;">
+                © The Bootstrap Authors
+            </div>
+            <div style="padding: 10px 0px 0px 0px; font-size: 1.25em">
+                <b>Chess.js</b>
+            </div>
+            <div style="color: #AAAAAA; font-size: 1em;">
+                © Jeff Hlywa
+            </div>
+            <div style="padding: 10px 0px 0px 0px; font-size: 1.25em;">
+                <b>Chessboard.js</b>
+            </div>
+            <div style="color: #AAAAAA; font-size: 1em;">
+                © Chris Oakman
+            </div>
+            <div style="padding: 10px 0px 0px 0px; font-size: 1.25em;">
+                <b>Fontawesome</b>
+            </div>
+            <div style="color: #AAAAAA; font-size: 1em;">
+                ©  Fonticons, Inc.
+            </div>
+            <div style="padding: 10px 0px 0px 0px; font-size: 1.25em;">
+                <b>JQuery</b>
+            </div>
+            <div style="color: #AAAAAA; font-size: 1em;">
+                © The jQuery Foundation
+            </div>
+            <div style="padding: 20px 0px 0px 0px;">
+                <div style="padding: 20px 0px 0px 0px; font-size: 1.25em; color: #FFFF00; font-weight: bold;">
+                    © 2020 - SBJJD Tecnologia Ltda.
+                </div>
+                <div style="padding: 0px 0px 20px 0px; font-size: 1.25em; font-weight: bold;">
+                    Produzido no Brasil
+                </div>
+                <img src="img/flags/POR.png" height="64" width="96">
+            </div>
+            <div style="margin: 20px 0px 20px 0px; border-bottom: 2px solid #FFFF00"></div>
+
+        </div>
+    </div>
+
+    <!-- SECTION: CONFIG  ************************************************************************************  -->
+    <div class="section_conf">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0;">
+            <div onclick="Nav_Conf_Idioma_Clicked();" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Idioma
+            </div>
+            <div onclick="Nav_Conf_Sounds_Clicked();" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Sons e notificações
+            </div>
+            <div onclick="Nav_Conf_Board_Clicked();" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Tema
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: CONFIG-BOARD  ************************************************************************************  -->
+    <div class="section_conf_board">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0;">
+            <div onclick="Nav_Set_Theme('default')" class="theme_border">
+                <div class="theme_fill" style="background: #f1dab7;"></div>
+                <div class="theme_fill" style="background: #b98767;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_default">Padrão</span>
+                </div>
+                <i id="theme_sel_default" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('light_blue')" class="theme_border">
+                <div class="theme_fill" style="background: #dce2e5;"></div>
+                <div class="theme_fill" style="background: #87a0ab;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_light_blue">Azul claro</span>
+                </div>
+                <i id="theme_sel_light_blue" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('dark_blue')"  class="theme_border">
+                <div class="theme_fill" style="background: #c0cbd5;"></div>
+                <div class="theme_fill" style="background: #4470a6;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_dark_blue">Azul escuro</span>
+                </div>
+                <i id="theme_sel_dark_blue" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('coffee')" class="theme_border">
+                <div class="theme_fill" style="background: #ffd79e;"></div>
+                <div class="theme_fill" style="background: #b06b28;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_coffee">Café com leite</span>
+                </div>
+                <i id="theme_sel_coffee" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('cinza_claro')" class="theme_border">
+                <div class="theme_fill" style="background: #f1eed6;"></div>
+                <div class="theme_fill" style="background: #d5d6b2;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_light_grey">Cinza claro</span>
+                </div>
+                <i id="theme_sel_cinza_claro" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('cinza_escuro')" class="theme_border">
+                <div class="theme_fill" style="background: #f7f7f7;"></div>
+                <div class="theme_fill" style="background: #777777;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_dark_grey">Cinza escuro</span>
+                </div>
+                <i id="theme_sel_cinza_escuro" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('orange')" class="theme_border">
+                <div class="theme_fill" style="background: #ffd699;"></div>
+                <div class="theme_fill" style="background: #ff9900;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_orange">Laranja</span>
+                </div>
+                <i id="theme_sel_orange" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('maroon')" class="theme_border">
+                <div class="theme_fill" style="background: #d4aa70;"></div>
+                <div class="theme_fill" style="background: #38281b;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_maroon">Marrom</span>
+                </div>
+                <i id="theme_sel_maroon" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('ocre')" class="theme_border">
+                <div class="theme_fill" style="background: #edcaa0;"></div>
+                <div class="theme_fill" style="background: #b94529;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_ocre">Ocre</span>
+                </div>
+                <i id="theme_sel_ocre" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('pink')" class="theme_border">
+                <div class="theme_fill" style="background: #ffe6f2;"></div>
+                <div class="theme_fill" style="background: #ff80bf;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_pink">Rosa</span>
+                </div>
+                <i id="theme_sel_pink" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('purple')" class="theme_border">
+                <div class="theme_fill" style="background: #f5e6ff;"></div>
+                <div class="theme_fill" style="background: #9900ff;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_purple">Roxo</span>
+                </div>
+                <i id="theme_sel_purple" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('teal')" class="theme_border">
+                <div class="theme_fill" style="background: #e1e5e7;"></div>
+                <div class="theme_fill" style="background: #0e8c9e;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_teal">Teal</span>
+                </div>
+                <i id="theme_sel_teal" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('army')" class="theme_border">
+                <div class="theme_fill" style="background: #799b84;"></div>
+                <div class="theme_fill" style="background: #5c7c64;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_army">Verde exército</span>
+                </div>
+                <i id="theme_sel_army" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('olive')" class="theme_border">
+                <div class="theme_fill" style="background: #fcffdf;"></div>
+                <div class="theme_fill" style="background: #78ab6d;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_olive">Verde oliva</span>
+                </div>
+                <i id="theme_sel_olive" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('green')" class="theme_border">
+                <div class="theme_fill" style="background: #dfdf6f;"></div>
+                <div class="theme_fill" style="background: #7f7f3f;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_green">Verde</span>
+                </div>
+                <i id="theme_sel_green" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('dark_green')" class="theme_border">
+                <div class="theme_fill" style="background: #d2cfce;"></div>
+                <div class="theme_fill" style="background: #004549;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_dark_green">Verde escuro</span>
+                </div>
+                <i id="theme_sel_dark_green" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+            <div onclick="Nav_Set_Theme('violet')" class="theme_border">
+                <div class="theme_fill" style="background: #a38aac;"></div>
+                <div class="theme_fill" style="background: #873a88;"></div>
+                <div class="theme_label">
+                    <span id="lang_conf_board_violet">Violeta</span>
+                </div>
+                <i id="theme_sel_violet" class="fa fa-check theme_check"></i>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: CONFIG IDIOMA  ************************************************************************************  -->
+    <div class="section_conf_idioma">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0;">
+            <!--
+            <div onclick="Lang_Clicked('DAN')" class="conf_lang_div">
+                <img src="img/flags/DAN.png" class="conf_lang_flag"> Dansk<i id="lang_sel_DAN" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            -->
+            <div class="conf_lang_div" style="color: #5085b7;">
+                <img src="img/flags/GER.png" class="conf_lang_flag"> Deutsch (bald) <i id="lang_sel_GER" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div class="conf_lang_div" style="color: #5085b7;">
+                <img src="img/flags/ENG.png" class="conf_lang_flag" > English (soon) <i id="lang_sel_ENG" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div class="conf_lang_div" style="color: #5085b7;">
+                <img src="img/flags/SPN.png" class="conf_lang_flag" > Español (breve) <i id="lang_sel_SPN" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <!--
+            <div onclick="Lang_Clicked('FRE')" class="conf_lang_div">J
+                <img src="img/flags/FRE.png" class="conf_lang_flag"> Français <i id="lang_sel_FRE" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div onclick="Lang_Clicked('ITA')" class="conf_lang_div">
+                <img src="img/flags/ITA.png" class="conf_lang_flag"> Italiano <i id="lang_sel_ITA" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div onclick="Lang_Clicked('HOL')" class="conf_lang_div">
+                <img src="img/flags/HOL.png" class="conf_lang_flag"> Nederlands <i id="lang_sel_HOL" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div onclick="Lang_Clicked('POL')" class="conf_lang_div">
+                <img src="img/flags/POL.png" class="conf_lang_flag"> Polski <i id="lang_sel_POL" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            -->
+            <div onclick="Lang_Clicked('POR')" class="conf_lang_div">
+                <img src="img/flags/POR.png" class="conf_lang_flag"> Português <i id="lang_sel_POR" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <!--
+            <div onclick="Lang_Clicked('RUS')" class="conf_lang_div">
+                <img src="img/flags/RUS.png" class="conf_lang_flag"> Pусский <i id="lang_sel_RUS" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div onclick="Lang_Clicked('SWE')" class="conf_lang_div">
+                <img src="img/flags/SWE.png" class="conf_lang_flag"> Svenska <i id="lang_sel_SWE" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            <div onclick="Lang_Clicked('TUR')" class="conf_lang_div">
+                <img src="img/flags/TUR.png" class="conf_lang_flag"> Türk <i id="lang_sel_TUR" class="fa fa-check conf_lang_txt"></i>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <!-- SECTION: CONFIG-SOUNDS  ************************************************************************************  -->
+    <div class="section_conf_sounds">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0; font-size: 1em; ">
+            <div style="border-bottom: 0px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_sound_moves">Som dos movimentos</span>
+                <div id="sound_moves" onclick="Nav_Conf_Sound_Moves();" style="float: right;">
+                    <img src="img/toggle_off.png" style="margin: 0px 10px 0px 0px;" width="60" height="26">
+                </div>
+            </div>
+            <div style="border-bottom: 0px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_sound_msgs">Som das mensagens</span>
+                <div id="sound_msgs" onclick="Nav_Conf_Sound_Msgs();" style="float: right;">
+                    <img src="img/toggle_on.png" style="margin: 0px 10px 0px 0px;" width="60" height="26">
+                </div>
+            </div>
+            <div style="border-bottom: 0px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_sound_keys">Som das teclas</span>
+                <div id="sound_keys" onclick="Nav_Conf_Sound_Keys();" style="float: right;">
+                    <img src="img/toggle_on.png" style="margin: 0px 10px 0px 0px;" width="60" height="26">
+                </div>
+            </div>
+            <div style="border-bottom: 0px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_notifications">Receber notificações</span>
+                <div id="notifications" onclick="Nav_Conf_Notifications();" style="float: right;">
+                    <img src="img/toggle_off.png" style="margin: 0px 10px 0px 0px;" width="60" height="26">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: CONFIG-TREINO ************************************************************************************  -->
+    <div class="section_conf_treino">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0;">
+            <div style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_max_exerc_time">Tempo máximo de cada exercício</span>
+            </div>
+            <div style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_show_solution">Exibir resultado após x tentativas</span>
+            </div>
+            <div style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <span id="lang_conf_show_coordenates">Exibir coordenadas</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: HELP ************************************************************************************  -->
+    <div class="section_help">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0; font-size: 1.1em;">
+            <div onclick="Show_Modal1();" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Primeiros passos
+            </div>
+            <div onclick="Show_Help_Questions('modulos');" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Módulos
+            </div>
+            <div onclick="Show_Help_Questions('treino');" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Treinamento
+            </div>
+            <div onclick="Show_Help_Questions('conta');" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Conta
+            </div>
+            <div onclick="Show_Help_Questions('solucao');" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Solução de problemas
+            </div>
+            <!--
+            <div onclick="Show_Help_Questions('politica');" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Política de privacidade
+            </div>
+            <div onclick="Show_Help_Questions('termos');" style="border-bottom: 1px solid #999999; padding: 10px 20px 10px 20px;">
+                <i class="fa fa-chevron-right" style="float: right; color: #FFFF00; font-size: 1.5em;"></i>
+                Termos de uso
+            </div>
+            -->
+        </div>
+    </div>
+
+    <div class="section_help_questions">
+        <div style="min-height: 500px; text-align: left; padding: 10px 0px 0px 0px; color: #FFFFF0; font-size: 1.1em;">
+            <div id="help_questions_area"></div>
+        </div>
+    </div>
+
+    <div class="section_help_answers">
+        <div class="help_answers_area" style="font-size: 1.5em; min-height: 500px; text-align: left; padding: 10px;">
+            <div id="help_answers_area"></div>
+        </div>
+    </div>
+
+    <div class="section_suporte">
+        <div id="area_input_msg" style="padding: 20px 0px 0px 0px;">
+            <center>
+                <div class="box_suporte" style="width: 90%; text-align: center;">
+                    <div style="padding: 10px; text-align: left; color: #333333; font-size: 1em;">
+                        <div style="margin-top: 10px; color: #cc0000; font-weight: bold; font-size: 1.5em;">
+                            Fale Conosco
+                        </div>
+                        <div style="margin-top: 10px;">
+                            Esse canal serve para você rapidamente reportar <b>eventuais problemas</b> do aplicativo, bem como enviar suas <b>dúvidas</b>, <b>críticas</b> e <b>sugestões</b>.
+                            <div style="height: 10px;"></div>
+                            Você poderá se comunicar conosco em <b>Inglês</b>, <b>Português</b>, <b>Espanhol</b> e <b>Alemão</b>.
+                            <div style="height: 10px;"></div>
+                            Faremos o possível para responder todas as mensagens em até <b>24 horas</b>.
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+                <textarea id="msg_suporte" rows="5" style="width: 300px; white-space: pre;" class="form-control" placeholder="Escreva aqui a sua mensagem"></textarea>
+                <button class="btn btn-warning" type="button" onclick="Nav_Suporte_Enviar();" style="margin-top: 10px;">
+                    Enviar
+                </button>
+            </center>
+            <div style="margin: 20px; border: 1px solid #FFFFFF;"></div>
+        </div>
+        <div id="suporte_area"></div>
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+
+"use strict";
+
+const VERSION             = "1.6";
+const RELEASE             = 5;
+const VERSION_DATE        = "07 de Janeiro de 2020";
+
+
+/************************************************************************************
+ *										     
+ * 												    					   Constantes
+ * 												     			         								     
+ ************************************************************************************/
+
+const CEL_WIDTH           = $(window).width();
+const CEL_APPCODENAME     = navigator.appCodeName;
+const CEL_APPNAME         = navigator.appName;
+const CEL_APPVERSION      = navigator.appVersion;
+const CEL_COOKIEENABLED   = navigator.cookieEnabled;
+const CEL_LANGUAGE        = navigator.language;
+const CEL_PLATFORM        = navigator.platform;
+const CEL_USERAGENT       = navigator.userAgent;
+const CEL_ONLINE          = navigator.onLine;
+
+
+
+/************************************************************************************
+ *
+ *													              Parâmetros Globais
+ *
+ ************************************************************************************/
+
+var VERSION_DIR		= VERSION + "." + RELEASE;
+var COLOR_CLICK		= COLOR.violet;
+
+var BOARD_WIDTH     = parseInt($("#board").width());
+var SQUARE_WIDTH    = parseInt((BOARD_WIDTH - BOARD_BORDER * 2) / 8);
+var HALF_SQUARE     = parseInt(SQUARE_WIDTH / 2);
+var Q_SQUARE        = parseInt(SQUARE_WIDTH / 4);
+
+var board_area  	= BOARD_WIDTH + (BOARD_BORDER * 2);
+var LATERAL     	= (CEL_WIDTH - board_area) / 2;
+
+var height_menu     = 32;
+var padding_menu    = 5;
+var height_header   = 52;
+var padding_header  = 15;
+var TOPO            = height_menu + padding_menu + height_header + (padding_header * 2);
+
+var ID_APP 	= "";
+
+$("#graph").attr('width', BOARD_WIDTH);
+$("#graph").attr('height', BOARD_WIDTH);
+$("#layer_tips").attr('width', BOARD_WIDTH);
+$("#layer_tips").attr('height', BOARD_WIDTH);
+
+var my_canvas 		= document.getElementById("graph");
+var LAYER 			= my_canvas.getContext("2d");
+
+var BOARD   = ChessBoard('board', params_board);
+var CHESS   = new Chess();
+
+/*
+var IAP = {
+    list: [ "adfree"]
+}
+
+IAP.load = function () {
+
+     // Check availability of the storekit plugin
+     if (!window.storekit) {
+          console.log("In-App Purchases not available");
+          return;
+     }
+
+     // Initialize
+     storekit.init({
+          debug:    true, // Enable IAP messages on the console
+          ready:    IAP.onReady,
+          purchase: IAP.onPurchase,
+          restore:  IAP.onRestore,
+          error:    IAP.onError
+     });
+
+};
+
+
+IAP.onReady = function () {
+     storekit.load(IAP.list, function (products, invalidIds) {
+          IAP.products = products;
+          IAP.loaded = true;
+          for (var i = 0; i < invalidIds.length; ++i) {
+               console.log("Error: could not load " + invalidIds[i]);
+          }
+     });
+};
+
+
+IAP.onPurchase = function (transactionId, productId, receipt) {
+     if(productId === 'adfree'){
+          alert("Ads Removed!");
+          //Code to remove ads for the user
+     }
+};
+
+
+IAP.onRestore = function (transactionId, productId, transactionReceipt) {
+     if(productId == 'adfree'){
+          //Code to remove ads for the user
+     }
+};
+
+
+IAP.onError = function (errorCode, errorMessage) {
+     console.log(errorCode);
+     console.log(errorMessage);
+};
+
+
+IAP.buy = function(productId){
+     storekit.purchase(productId);
+};
+
+
+IAP.restore = function(){
+     storekit.restore();
+};
+
+
+document.addEventListener("deviceready", function(){
+     IAP.load();
+}, false);
+
+
+IAP.buy('adfree');
+
+*/
+//=====================================================================================
+
+
+var CLIC_FROM 	= "";
+var CLIC_TO		= "";	
+
+var LG 		= "";
+var MSG		= "";
+var TIPS	= "";
+
+var LANG    = new Lang();
+
+
+var BUTTONS = {			// true = on
+	but_1: true, 	 
+	but_2: true,
+	but_3: true,
+	but_4: true,
+	but_5: true
+}
+
+
+$(document).ready(function(){
+
+	var foo = new Startup();
+    Inicializa_Tooltipster();
+
+});
+
+document.addEventListener('deviceready', onDeviceReady);
+
+function onDeviceReady() {
+  store.when('gam_01')
+    .updated(refreshUI)
+    .approved(finishPurchase);
+  store.register({type: store.CONSUMABLE, id: 'gam_01'});
+  store.refresh();
+}
+
+function refreshUI() {
+
+}
+
+function finishPurchase(p){
+    p.finish();
+    if (p.owned) {
+        But_Down_Mod(p.id);
+    }
+}
+
+ 
+
+
+
+/*******************************************************************************
+*
+* 												    		   PRIMARY FUNCTIONS 
+*
+********************************************************************************/
+
+ 
+
+var Startup = function() {
+
+	Set_ID_App();	
+	
+	Set_Language(CONF.lang);
+	MY_MODS.Populate_Mods_Acquired();	
+
+	AJAX.Update_Store();	
+	HELP.Populate_Help();
+	Build_Modal_First_Steps();
+	
+	TEMA.Set_Theme(CONF.theme);	
+	Draw_Buttons_Board();
+
+	Check_New_Messages();
+	setInterval(Check_New_Messages, MSGS_UPDATE_FREQ * 60000);
+	
+	NAV.Show_Gym();
+
+    setInterval(QUOTE.Print, 10000);
+    QUOTE.Print();
+
+    $("#about_version").html(VERSION + "." + RELEASE);
+    $("#about_released").html(VERSION_DATE);
+
+    LANG.Set_Lang_Selec();
+	
+}
+
+
+
+// Chamada a partir da class.naveg
+// Utilizada para resetar variáveis quando o usuário clica num dos botões do menu superior no meio dos exercícios
+var Reset_Training = function () {
+
+    MOD.Reset();
+    DAY.Reset();
+    EXERC.Reset();
+    CLOCK.Reset();
+    GRAPH.Reset();
+
+}
+
+
+
+function Set_Language(lang) {
+	
+	if (lang == "POR") {
+		LG 		= LG_POR;
+		MSG 	= MSG_POR;
+		TIPS 	= TIPS_POR;
+		return;
+	}
+	
+	if (lang == "SPN") {
+		LG 		= LG_SPN;	
+		MSG 	= MSG_SPN;
+		TIPS 	= TIPS_SPN;
+		return;
+	}	
+
+	LG 		= LG_ENG;
+	MSG 	= MSG_ENG;
+	TIPS 	= TIPS_ENG;
+
+}
+
+
+
+function Start_Training(day) {
+
+    NAV.Show_Board();	
+
+    DAY.Set_Training_Day(day);      
+    DAY.Next_Exerc();
+        
+}
+
+
+
+
+/*******************************************************************************
+*
+* 												    			NAVEG FUNCTIONS 
+*
+********************************************************************************/
+
+
+
+function But_Down_Amostra(id_mod) {
+
+	AJAX.Download_Amostra(id_mod);
+
+}
+
+
+function But_Down_Mod(id_mod) {
+
+	AJAX.Download_Mod(id_mod);
+	
+}
+
+function Buy_New_Product(id_mod){
+    store.order(id_mod);
+}
+
+
+
+function But_Board_Clicked(num_but) {
+
+    $("#but_board_" + num_but).blur();																									// remove o foco do botão
+
+    if (BUTTONS.but_1 && num_but == 1) {
+        return But_Undo_Exerc();
+    }
+
+    if (BUTTONS.but_2 && num_but == 2) {
+        return But_Undo_Half();
+    }
+
+    if (BUTTONS.but_3 && num_but == 3) {
+        return But_Redo_Exerc();
+    }
+
+    if (BUTTONS.but_4 && num_but == 4) {
+        return But_Next_Half();
+    }
+
+    if (BUTTONS.but_5 && num_but == 5) {
+        return But_Next_Exerc();
+    }
+
+}
+
+
+	
+function But_Cancel_Cad() {
+
+	NAV.Show_Gym();
+	
+}
+
+
+
+function But_OK_Msg_Day() {
+
+    $("#but_modal4_close").click();
+
+}
+
+
+function But_OK_Msg_Intro() {
+
+    $("#but_modal5_close").click();
+
+}
+
+
+	
+function But_Save_Cad() {
+
+	ACC.Save_Cadastro();
+	    
+}
+
+
+function But_Undo_Exerc() {
+
+	DAY.Prev_Exerc();
+
+}
+
+
+function But_Undo_Half() {
+
+	DAY.Prev_Half();
+
+}
+
+
+function But_Redo_Exerc() {
+
+	DAY.Redo_Exerc();
+
+}
+
+
+function But_Next_Half() {
+
+	DAY.Next_Half();
+
+}
+
+
+function But_Next_Exerc() {
+
+	DAY.Next_Exerc();
+
+}
+
+
+function Canvas_Clicked(event) {
+
+	if (!DAY.Canvas_Is_Clicavel()) {
+		return;
+	}
+    
+    if (CONF.sound_moves == "on") {
+    	AUD.Play('click');
+    }	
+    
+	//var graph = new Graph();
+
+    var col = parseInt((event.clientX - LATERAL - BOARD_BORDER)  / SQUARE_WIDTH);
+    var row = parseInt((event.clientY - TOPO - BOARD_BORDER) / SQUARE_WIDTH);
+
+	var square = Get_Square(col, row);
+
+    if (CLIC_FROM != "") {
+    	CLIC_TO = square;
+        GRAPH.Draw_Border_Square(square, COLOR_CLICK, 2);
+        setTimeout(GRAPH.Clear_Layer, DELAY.square);
+        if (Validate_Move(CLIC_FROM, CLIC_TO)) {
+            DAY.Check_User_Move(CLIC_FROM, CLIC_TO);
+        } else {
+    		if (CONF.sound_moves == "on") {
+    			AUD.Play('invalid');
+    		}	
+        }
+        CLIC_TO 	= "";
+        CLIC_FROM 	= "";
+    } else {
+        GRAPH.Clear_Layer();        
+        GRAPH.Draw_Border_Square(square, COLOR_CLICK, 2);
+        CLIC_FROM = square;
+    }
+
+}
+
+
+
+
+function Nav_About_Clicked() {
+
+    NAV.Show_About();
+
+}
+
+
+function Nav_Account_Clicked() {
+    
+    var ja_cadastrou = localStorage.getItem('cadastro');
+
+    if (ja_cadastrou == "OK") {
+   		$("#modal2_header").html(LG.tit_modal_msg);
+	    $("#modal2_body").html(LG.cadastro_ok);
+	    $("#show_modal2").click();	 
+        NAV.Show_Gym();
+    } else {
+        NAV.Show_Account();
+    }
+
+}
+
+
+function Nav_Conf_Clicked() {
+
+    NAV.Show_Conf();
+
+}
+
+
+function Nav_Conf_Board_Clicked() {
+
+    NAV.Show_Conf_Board();
+
+}
+
+
+function Nav_Conf_Idioma_Clicked() {
+
+    NAV.Show_Conf_Idioma();
+
+}
+
+
+function Nav_Conf_Sounds_Clicked() {
+
+    NAV.Show_Conf_Sounds();
+
+}
+
+
+function Nav_Conf_Treino_Clicked() {
+
+    NAV.Show_Conf_Treino();
+
+}
+
+
+
+
+function Nav_Conf_Sound_Moves() {
+
+    if (CONF.sound_moves == "on") {
+        CONF.sound_moves = "off";
+    } else {
+        CONF.sound_moves = "on";
+    }
+
+    CONF.Toggle_Config("sound_moves", CONF.sound_moves);
+    localStorage.setItem('sound_moves', CONF.sound_moves);
+
+}
+
+
+function Nav_Conf_Notifications() {
+
+    if (CONF.notifications == "on") {
+        CONF.notifications = "off";
+    } else {
+        CONF.notifications = "on";
+    }
+
+    CONF.Toggle_Config("notifications", CONF.notifications);
+    localStorage.setItem('notifications', CONF.notifications);
+
+}
+
+
+function Nav_Conf_Sound_Keys() {
+
+    if (CONF.sound_keys == "on") {
+        CONF.sound_keys = "off";
+    } else {
+        CONF.sound_keys = "on";
+    }
+
+    CONF.Toggle_Config("sound_keys", CONF.sound_keys);
+    localStorage.setItem('sound_keys', CONF.sound_keys);
+
+}
+
+
+function Nav_Conf_Sound_Msgs() {
+
+    if (CONF.sound_msgs == "on") {
+        CONF.sound_msgs = "off";
+    } else {
+        CONF.sound_msgs = "on";
+    }
+
+    CONF.Toggle_Config("sound_msgs", CONF.sound_msgs);
+    localStorage.setItem('sound_msgs', CONF.sound_msgs);
+
+}
+
+
+
+
+
+
+
+function Nav_Day_Clicked(day) {
+
+    Start_Training(day);
+
+}
+
+
+function Nav_GoBack() {
+
+    var cur_page = Get_Current_Page();
+
+    if (cur_page == 'section_board' || cur_page == 'section_stats' || cur_page == 'section_days') {
+        return Nav_Gym_Clicked();
+    }
+
+    if (cur_page == 'section_conf_board' || cur_page == 'section_conf_idioma' || cur_page == 'section_conf_sounds' || cur_page == 'section_conf_treino') {
+        return Nav_Conf_Clicked();
+    }
+
+    if (cur_page == 'section_help_questions') {
+        return Nav_Help_Clicked();
+    }
+
+    if (cur_page == 'section_about' || cur_page == 'section_account' || cur_page == 'section_suporte') {
+        return Nav_Menu_Clicked();
+    }
+
+}
+
+
+function Nav_Help_Clicked() {
+
+    NAV.Show_Help();
+
+}
+
+
+function Nav_Gym_Clicked() {
+
+    NAV.Show_Gym();
+
+}
+
+
+
+function Lang_Clicked(selec) {
+
+    CONF.lang = selec;
+    localStorage.setItem('conf_lang', selec);
+    LG.Set_Lang_Selec();
+
+}
+
+
+function Nav_Menu_Clicked() {
+
+    NAV.Show_Menu();
+
+}
+
+
+
+function Nav_Recover_Clicked() {
+
+   	$("#modal2_header").html(LG.tit_modal_msg);
+	$("#modal2_body").html(LG.not_implemented);
+	$("#show_modal2").click();	 
+
+}
+
+
+function Nav_Reset_Clicked() {
+
+    var r = confirm(LG.excluir_conta);
+
+    if (r == true) {
+        localStorage.clear();
+        Excluir_Conta();
+    }
+
+
+
+
+}
+
+
+
+function Nav_Restart_Clicked() {
+
+    var r = confirm(LG.refazer_modulo);    
+
+    if (r == true) {
+		MOD.Zera_Stats_Modulo();        
+		MOD.Set_Modulo(MOD.id_mod, CONF.lang);
+		
+		MY_MODS.Populate_Mods_Acquired();
+
+    	NAV.Show_Gym();
+                
+    }
+
+}
+
+
+function Nav_Set_Theme(tema) {
+
+	TEMA.Set_Theme(tema);	
+
+}
+
+
+
+function Nav_Start_Reforco() {
+
+    NAV.Show_Board();	
+
+	DAY.Start_Reforco();   
+    DAY.Next_Exerc();   
+
+}
+
+
+
+function Nav_Stats_Clicked(id_mod) {
+
+	STATS.Build_Stats(id_mod);
+
+    NAV.Show_Stats(id_mod);
+
+}
+
+
+function Nav_Store_Clicked() {
+
+    NAV.Show_Store();
+
+}
+
+
+
+function Nav_Suporte_Clicked() {
+
+    NAV.Show_Suporte();
+
+}
+
+
+
+function Nav_Suporte_Enviar() {
+
+	SUPP.Send_Msg();
+	
+	setInterval(Check_New_Messages, 1000);
+
+}
+
+
+
+function Nav_Training_Clicked(id_mod) {
+
+	MOD.Set_Modulo(id_mod);
+    NAV.Show_Days(id_mod);
+    
+}
+
+
+function Show_Help(ind) {
+
+	HELP.Show(ind);
+
+}
+
+
+
+
+function Show_Info(ref) {
+
+    if (ref == "stats") {
+        $("#modal3_header").html    (LG.info_stats_tit);
+        $("#modal3_body").html      (LG.info_stats_body);
+    }
+
+    if (ref == "days") {
+        $("#modal3_header").html    (LG.info_days_tit);
+        $("#modal3_body").html      (LG.info_days_body);
+    }
+
+    if (ref == "cadastro") {
+        $("#modal3_header").html    (LG.info_cad_tit);
+        $("#modal3_body").html      (LG.info_cad_body);
+    }
+
+    $("#show_modal3").click();
+
+}
+
+
+
+function Show_Help_Questions(categ) {
+
+    HELP.Populate_Help_Questions(categ);
+
+    NAV.Show_Help_Questions(categ);
+
+}
+
+
+
+function Show_Modal1() {
+
+    $("#show_modal1").click();
+
+}
+
+
+
+</script>
+
+
